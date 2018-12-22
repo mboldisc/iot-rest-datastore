@@ -1,0 +1,40 @@
+{
+  "database_ip_address": "127.0.0.1",
+  "database": "EXAMPLE",
+  "database_user": "example-user",
+  "database_password": "password",
+  "database_pool_size": 1,
+  "version": "1.1",
+  "tasks": [],
+  "users": [
+    {
+      "username": "admin",
+      "password": "b025d883b5d875a10649fcdb6d89fd22aaf1589ae478988042722479"
+    },
+    {
+      "username": "sensor-account",
+      "password": "5d3e1fb726bfbbf59fc276aeb73dc36d2dc916031525213fd64effad"
+    }
+  ],
+  "endpoints": [
+    {
+      "path": "sensor-event",
+      "get": {
+        "commit": true,
+        "query": "SELECT * FROM SENSOR_EVENT;",
+        "description": "Gets all sensor events",
+        "users": [
+          "admin"
+        ]
+      },
+      "put": {
+        "commit": true,
+        "query": "INSERT INTO SENSOR_EVENT (RAW_VALUE) VALUES (%(RAW_VALUE)s);",
+        "description": "Inserts a sensor event",
+        "users": [
+          "sensor-account"
+        ]
+      }
+    }
+  ]
+}
